@@ -1,0 +1,3 @@
+<view class="cu-modal show  {{bottomModal?'bottomModal':''}}" >
+    <slot name="cu-dialog"></slot>
+</view>

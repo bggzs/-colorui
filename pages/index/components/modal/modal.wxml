@@ -1,3 +1,12 @@
-<view class="cu-modal show  {{bottomModal?'bottomModal':''}}" >
+<view class="cu-modal {{visible?'show':''}}  {{bottomModal?'bottom-modal':''}}">
     <slot name="cu-dialog"></slot>
+    <view class="cu-dialog" wx:if="{{off}}">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">Modal标题</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl">Modal 内容。</view>
+    </view>
 </view>

@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "cu-basic":"./components/basics/index",
+    "cu-modal":"./components/modal/modal"
+  }
 }

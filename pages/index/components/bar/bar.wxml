@@ -1,0 +1,5 @@
+<view class="cu-bar">
+    <view class="action border-title">
+        <slot name="content"></slot>
+    </view>
+</view>

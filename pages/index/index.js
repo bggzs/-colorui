@@ -9,14 +9,12 @@ Page({
     motto: 'Hi 开发者！',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    visible:false,
+    bottomModal:false,
+    drawerModal:false,
   },
   //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -45,12 +43,29 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  showModal(e){
+    if(e.currentTarget.dataset.target==="bottomModal"){
+      console.log('底部')
+      this.setData({
+        visible:true,
+        bottomModal:true
+      })
+    }else if(e.currentTarget.dataset.target==='drawerModal'){
+      this.setData({
+        visible:true,
+        drawerModal:true
+      })
+    }else{
+      this.setData({
+        visible:true,
+        drawerModal:false,
+        bottomModal:false
+      })
+    }
+  },
+  hideModal(){
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      visible:false,
     })
   }
 })

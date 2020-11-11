@@ -1,17 +1,39 @@
-<cu-custom bgColor="bg-gradual-blue">
-  <view slot="content">ColorUI 空白模板</view>
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="content" class="text-white">模态窗口</view>
 </cu-custom>
-<view class="margin-xl padding-xl bg-white radius shadow shadow-lg">
-  <view class="flex justify-center">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='cu-btn round bg-green shadow'> 获取头像昵称 </button>
-    <block wx:else>
-      <view class='text-center'>
-        <view class="cu-avatar xl round solids" style="background-image:url({{userInfo.avatarUrl}})"></view>
-        <view class="padding">{{userInfo.nickName}}</view>
-      </view>
-    </block>
-  </view>
-</view>
-<view class="text-center margin-top">
-  <text class="text-grey text-xl">{{motto}}</text>
+<view class="page">
+    <view class="cu-bar bg-white margin-top">
+        <view class="action">
+            <text class="cuIcon-title text-orange "></text>
+            普通窗口
+        </view>
+        <view class="action">
+            <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="Modal">
+                Modal
+            </button>
+        </view>
+    </view>
+    <view class="cu-bar bg-white margin-top">
+        <view class="action">
+            <text class="cuIcon-title text-orange "></text>
+            底部窗口
+        </view>
+        <view class="action">
+            <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="bottomModal">
+                Bottom
+            </button>
+        </view>
+    </view>
+
+    <cu-modal visible="{{visible}}" bottomModal="{{bottomModal}}" off="{{false}}" drawerModal="{{drawerModal}}" bind:hide="hideModal">
+        <view slot="cu-dialog" class="cu-dialog" >
+            <view class="cu-bar bg-white justify-end">
+                <view class="content">父组件</view>
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close text-red"></text>
+                </view>
+            </view>
+            <view class="padding-xl">父组件</view>
+        </view>
+    </cu-modal>
 </view>
